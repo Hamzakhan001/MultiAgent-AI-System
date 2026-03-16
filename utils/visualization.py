@@ -2,18 +2,15 @@ import os
 from IPython.display import Image, display
 from langchain_core.runnables.graph import MermaidDrawMethod
 import nest_asyncio
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_chroma import Chroma
 
 # Import the embedding model from Together AI
-# NOTE: Adjust this import to use a different embedding model
-from langchain_together import TogetherEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
-# Initialize the embedding model using Alibaba's GTE ModernBERT base model
-# This model is used to convert text into vector representations for similarity search
-EMBEDDING_MODEL = TogetherEmbeddings(
-    model="Alibaba-NLP/gte-modernbert-base",
+EMBEDDING_MODEL = OpenAIEmbeddings(
+    model="text-embedding-3-small",
 )
 
 # List of URLs containing LangGraph documentation
